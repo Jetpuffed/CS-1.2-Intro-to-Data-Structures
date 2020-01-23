@@ -1,5 +1,8 @@
 # Created by https://www.gitignore.io/api/macos,python
 
+# Classwork Folder
+Classwork
+
 ### macOS ###
 *.DS_Store
 .AppleDouble

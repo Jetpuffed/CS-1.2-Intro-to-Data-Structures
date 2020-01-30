@@ -1,3 +1,4 @@
+import sys
 # file_words = open("text.txt", "r")
 # lines_words = file_words.readlines()
 source = []
@@ -5,6 +6,8 @@ with open("text.txt", "r") as _:
     for line in _:
         for word in line.split():
             source.append(word)
+
+args = sys.argv[1:]
 
 
 def histogram(source_text):
@@ -21,7 +24,7 @@ def histogram(source_text):
 
 def unique_words(histogram):
     """Reads a histogram and counts the amount of keys."""
-    return len(histogram)
+    return f"Total unique words: {len(histogram)}"
 
 
 def frequency(word, histogram):
@@ -31,3 +34,8 @@ def frequency(word, histogram):
         return "Word not found."
     else:
         return f"Word has been used {histogram[word]} times."
+
+
+h = histogram(source)
+print(unique_words(h))
+print(frequency(args[0], h))

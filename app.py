@@ -3,14 +3,12 @@
 
 from flask import Flask
 
-from dictionary_words import generate
-
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    return generate(10)
+    return "A randomly generated sentence will go here."
 
 
 if __name__ == "__main__":

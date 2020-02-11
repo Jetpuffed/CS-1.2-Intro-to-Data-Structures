@@ -20,3 +20,7 @@ def generate(args):
                 index += 1
 
     return " ".join(sentence)
+
+
+if __name__ == "__main__":
+    generate(arg)

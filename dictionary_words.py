@@ -1,17 +1,20 @@
+#!/usr/bin/env python3
+# encoding=utf-8
+
 import random
 import sys
 
-num = sys.argv[1:]
+arg = sys.argv[1:]
 
-file_words = open("/usr/share/dict/words", "r")
-lines_words = file_words.readlines()
-sentence = []
+with open("/usr/share/dict/words", "r") as file_words:
+    lines_words = file_words.readlines()
+    sentence = []
 
-i = 0
-while i < int(num[0]):
-    if i != int(num[0]):
-        random_index = random.randint(0, len(lines_words) - 1)
-        sentence.append(lines_words[random_index].strip())
-        i += 1
+    index = 0
+    while index < int(arg[0]):
+        if index != int(arg[0]):
+            random_index = random.randint(0, len(lines_words) - 1)
+            sentence.append(lines_words[random_index].strip())
+            index += 1
 
-print(" ".join(sentence))
+    print(" ".join(sentence))

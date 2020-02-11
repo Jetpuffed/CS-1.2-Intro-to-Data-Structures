@@ -1,41 +1,41 @@
+#!/usr/bin/env python3
+# encoding=utf-8
+
 import sys
-# file_words = open("text.txt", "r")
-# lines_words = file_words.readlines()
-source = []
-with open("text.txt", "r") as _:
-    for line in _:
-        for word in line.split():
-            source.append(word)
 
 args = sys.argv[1:]
 
 
-def histogram(source_text):
-    """Builds a histogram from a data set."""
-    histogram = {}
-    for _ in source_text:
-        if histogram.get(_) is None:
-            n = source_text.count(_)
-            histogram[_] = n
-        else:
-            continue
-    return histogram
+class Histogram(object):
+    def __init__(self):
+        self.source = []
+
+    def write_source(self):
+        with open("text.txt", "r") as txt:
+            for line in txt:
+                for word in line.split():
+                    self.source.append(word)
+
+    def read_histogram(self):
+        dictionary = {}
+        for key in self.source:
+            if dictionary.get(key) is None:
+                count = self.source.count(key)
+                dictionary[key] = count
+        return dictionary
+
+    def get_unique_words(self, histogram):
+        return "Total unique words: {0}".format(len(histogram))
+
+    def get_frequency(self, key, histogram):
+        if histogram.get(key) is None:
+            return "Word not found."
+        return "Word has been used {0} times.".format(histogram[key])
 
 
-def unique_words(histogram):
-    """Reads a histogram and counts the amount of keys."""
-    return f"Total unique words: {len(histogram)}"
-
-
-def frequency(word, histogram):
-    """Takes a word and a histogram and returns
-    the number of times the word was detected."""
-    if histogram.get(word) is None:
-        return "Word not found."
-    else:
-        return f"Word has been used {histogram[word]} times."
-
-
-h = histogram(source)
-print(unique_words(h))
-print(frequency(args[0], h))
+if __name__ == "__main__":
+    app = Histogram()
+    app.write_source()
+    histogram = app.read_histogram()
+    print(app.get_unique_words(histogram))
+    print(app.get_frequency(args[0], histogram))

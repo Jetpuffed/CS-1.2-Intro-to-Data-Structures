@@ -23,4 +23,4 @@ def generate(args):
 
 
 if __name__ == "__main__":
-    generate(arg)
+    print(generate(arg[0]))

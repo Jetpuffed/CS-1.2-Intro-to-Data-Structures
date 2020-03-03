@@ -19,7 +19,7 @@ class Dictogram(object):
         """
         dictogram = {}
         for word in self.word_list:
-            dictogram[word] = self.word_list.count(word)
+            dictogram[word] = dictogram.get(word, 0) + 1
         return dictogram
 
     def frequency(self, word):

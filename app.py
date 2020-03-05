@@ -3,12 +3,17 @@
 
 from flask import Flask
 
+from markov import MarkovChain
+
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    return "A randomly generated sentence will go here."
+    markov = MarkovChain(
+        ["one", "fish", "two", "fish", "red", "fish", "blue", "fish"],
+    )
+    return markov.walk(10)
 
 
 if __name__ == "__main__":
